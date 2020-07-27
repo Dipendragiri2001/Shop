@@ -20,3 +20,4 @@ namespace MyShop.Core.Models
 
    
 }
+ 
