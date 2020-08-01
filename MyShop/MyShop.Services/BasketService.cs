@@ -131,9 +131,9 @@ namespace MyShop.Services
             }
         }
 
-        public BasketSummaryViewModel GetBasketSummary (HttpContextBase httpCOntext)
+        public BasketSummaryViewModel GetBasketSummary (HttpContextBase httpContext)
         {
-            Basket basket = GetBasket(httpCOntext, false);
+            Basket basket = GetBasket(httpContext, false);
             BasketSummaryViewModel model = new BasketSummaryViewModel(0, 0);
             if ( basket !=null)
             {
@@ -154,6 +154,14 @@ namespace MyShop.Services
                 return model;
                 
             }
+        }
+
+        public void ClearBasket(HttpContextBase httpContext )
+        {
+            Basket basket = GetBasket(httpContext,false);
+            basket.BasketItems.Clear();
+
+            basketContext.Commit();
         }
 
 
